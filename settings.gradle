@@ -1,0 +1,5 @@
+rootProject.name = "My Application"
+include ':app'
+include ':mallmodel'
+include ':mylibrary'
+include ':moduelmain'
