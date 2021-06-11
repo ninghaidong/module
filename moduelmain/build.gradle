@@ -51,6 +51,9 @@ android {
             }
         }
     }
+
+    resourcePrefix "moduelmain_"
+
 }
 
 dependencies {

@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.mallmodel_activity_main);
         ARouter.getInstance().inject(this);
         content = findViewById(R.id.content);
         content.setText(name);
