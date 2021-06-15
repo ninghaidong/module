@@ -1,6 +1,7 @@
 package com.xbtx.moduelmain;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spannable;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public class MyClickSpan extends ClickableSpan {
+        public class MyClickSpan extends ClickableSpan {
         private String mSpan;
 
         MyClickSpan(String span) {
@@ -75,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void updateDrawState(TextPaint ds) {
             ds.setUnderlineText(false);
-            super.updateDrawState(ds);
+            ds.setColor(Color.parseColor("#3F51B5"));
+//            super.updateDrawState(ds);
         }
 
         @Override
