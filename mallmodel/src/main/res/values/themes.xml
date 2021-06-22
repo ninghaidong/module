@@ -9,4 +9,19 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="RadingStyle" parent="@android:style/Widget.RatingBar" tools:ignore="ResourceName">
+        <!-- 定义星星图片 -->
+        <item name="android:progressDrawable">@drawable/layer_live_rating_bar</item>
+        <!-- 根据自定义星星图片的大小,设置相应的值,否则可能显示不全 -->
+        <item name="android:numColumns">5</item>
+        <item name="android:minHeight">10dip</item>
+        <item name="android:maxHeight">10dip</item>
+
+    </style>
+    <!--自定义RatingBar Drawable-->
+    <style name="RatingBar_CustomDrawable" parent="@android:style/Widget.Holo.RatingBar.Indicator" tools:ignore="ResourceName">
+        <item name="android:progressDrawable">@drawable/layer_live_rating_bar</item>
+        <item name="android:minHeight">8dp</item>
+        <item name="android:maxHeight">8dp</item>
+    </style>
 </resources>

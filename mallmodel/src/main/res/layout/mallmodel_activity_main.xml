@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
-    tools:ignore="MissingDefaultResource"
-    android:background="@color/white">
+    tools:ignore="MissingDefaultResource">
 
     <TextView
         android:id="@+id/content"
@@ -17,5 +18,29 @@
         android:id="@+id/pay_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="支付弹框"/>
+        android:text="支付弹框" />
+
+    <RatingBar
+        android:id="@+id/rb"
+        style="@style/RatingBar_CustomDrawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="2"
+        android:stepSize="1"
+        android:visibility="gone" />
+
+    <com.xbtx.mallmodel.RatingBarView
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:ratingCount="2"
+        app:ratingClick="false"
+        app:starCount="5"
+        app:starEmpty="@drawable/mallmodel_ic_rate_stroke"
+        app:starFill="@drawable/mallmodel_ic_rate_solid"
+        app:starImageSize="20dp" />
+
 </LinearLayout>

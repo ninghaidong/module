@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <declare-styleable name="RatingBarView" tools:ignore="ResourceName">
+
+        <attr name="starImageSize" format="dimension"/>
+        <attr name="starCount" format="integer"/>
+        <attr name="starEmpty" format="reference"/>
+        <attr name="starFill" format="reference"/>
+        <attr name="ratingCount" format="integer"/>
+        <attr name="ratingClick" format="boolean"/>
+
+    </declare-styleable>
+
+</resources>

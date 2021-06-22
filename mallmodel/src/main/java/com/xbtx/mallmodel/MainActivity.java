@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Autowired()
     String name;
     private Button payDialog;
+    private RatingBarView ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         ARouter.getInstance().inject(this);
         content = findViewById(R.id.content);
         payDialog = findViewById(R.id.pay_dialog);
+        ratingBar = findViewById(R.id.ratingBar);
         content.setText(name);
         int a = 1;
         double b = 1.01;

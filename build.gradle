@@ -39,7 +39,7 @@ task clean(type: Delete) {
 
 ext {
     //表示是作为module还是application
-    isModule = true
+    isModule = false
     compileSdkVersion = 28
     applicationId = "com.xbtx.myapplication"
     minSdkVersion = 21
