@@ -12,6 +12,7 @@
         android:id="@+id/content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.3"
         android:text="hello_word!" />
 
     <Button
@@ -36,11 +37,17 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:ratingCount="2"
         app:ratingClick="false"
+        app:ratingCount="2"
         app:starCount="5"
         app:starEmpty="@drawable/mallmodel_ic_rate_stroke"
         app:starFill="@drawable/mallmodel_ic_rate_solid"
         app:starImageSize="20dp" />
+
+    <Button
+        android:id="@+id/second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转" />
 
 </LinearLayout>

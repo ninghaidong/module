@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="WeatherChartView" tools:ignore="ResourceName">
+        <attr name="textSize" format="dimension"/>
+        <attr name="dayColor" format="color"/>
+
+        <attr name="nightColor" format="color"/>
+        <attr name="textColor" format="color"/>
+    </declare-styleable>
+</resources>
