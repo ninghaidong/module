@@ -15,7 +15,14 @@
         app:dayColor="@color/purple_200"
         app:nightColor="@color/purple_500"
         app:textColor="@android:color/white"
-        app:textSize="14sp"/>
+        app:textSize="14sp"
+        android:visibility="gone"/>
 
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fist"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>
