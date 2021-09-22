@@ -69,4 +69,8 @@ dependencies {
     implementation project(path: ':mylibrary')
     //androidX版本
     implementation 'com.github.lzjin:AlipayPassDialog:2.2'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'cn.jzvd:jiaozivideoplayer:7.4.2'
+
 }

@@ -2,39 +2,81 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity2"
     tools:ignore="ResourceName">
+
+    <ImageView
+        android:id="@+id/image_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
 
     <com.xbtx.mallmodel.WeatherChartView
         android:id="@+id/line_char"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_centerInParent="true"
+        android:visibility="gone"
         app:dayColor="@color/purple_200"
         app:nightColor="@color/purple_500"
         app:textColor="@android:color/black"
-        app:textSize="14sp"
-        android:visibility="gone"/>
+        app:textSize="14sp" />
 
     <com.xbtx.mallmodel.MyLineChartView
         android:id="@+id/linechartview"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <com.xbtx.mallmodel.MySecondLineChartView
         android:id="@+id/secondLine"
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
+        android:layout_height="300dp"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/fist"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_diagram"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:overScrollMode="never"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:id="@+id/relayout_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:visibility="gone">
+        <FrameLayout
+            android:id="@+id/fraglayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <cn.jzvd.JzvdStd
+                android:id="@+id/jz_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"></cn.jzvd.JzvdStd>
+
+        </FrameLayout>
+    </LinearLayout>
+
+
 
 </RelativeLayout>

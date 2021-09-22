@@ -7,4 +7,21 @@
         <attr name="nightColor" format="color"/>
         <attr name="textColor" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="GoodProgressView" tools:ignore="ResourceName">
+        <attr name="startColor" format="color" />
+        <attr name="endColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="textColor1" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="CountDownProgressBar" tools:ignore="ResourceName">
+        <attr name="countDown_circleWidth" format="dimension" />
+        <attr name="countDown_centerTextSize" format="dimension" />
+        <attr name="countDown_betaAngle" format="integer" />
+        <attr name="countDown_firstColor" format="color" />
+        <attr name="countDown_secondColor" format="color" />
+        <attr name="countDown_centerTextColor" format="color" />
+        <attr name="countDown_isShowGradient" format="boolean" />
+    </declare-styleable>
 </resources>

@@ -1,6 +1,7 @@
 package com.xbtx.moduelmain;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
@@ -61,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
 //                ARouter.getInstance().build("/app/SecondActivity").withString("name", "阿栋").navigation();
                 //对象传参跳转
                 //ARouter.getInstance().build(ARouterPath.PATH_SECOND).withParcelable("bean", new Bean("阿栋", "24")).navigation();
-                ARouter.getInstance().build(ARouterPath.PATH_MALLMODEL_MAIN).withString("name", "阿栋").navigation();
+//                ARouter.getInstance().build(ARouterPath.PATH_MALLMODEL_MAIN).withString("name", "阿栋").navigation();
+                Intent intent=new Intent(MainActivity.this,SecondActivity.class);
+                startActivity(intent);
             }
         });
     }

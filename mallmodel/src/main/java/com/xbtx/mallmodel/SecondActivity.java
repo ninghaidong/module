@@ -2,10 +2,17 @@ package com.xbtx.mallmodel;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,13 +44,63 @@ public class SecondActivity extends AppCompatActivity {
         StudyBendLine stubline = findViewById(R.id.stubline);
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         recyclerView = findViewById(R.id.recyclerView);
+        Button scroBtu = findViewById(R.id.scroBtu);
+        NumberFlipView btNumber = findViewById(R.id.btNumber);
+        GoodProgressView progress_view = findViewById(R.id.progress_view);
+        ObservableScrollView scrollView = findViewById(R.id.scrollView);
         stringList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             stringList.add("阿栋" + i);
         }
         SecondAdapter secondAdapter = new SecondAdapter(stringList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(secondAdapter);
+        scroBtu.setOnClickListener(v -> {
+            recyclerView.scrollToPosition(0);
+        });
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState ==RecyclerView.SCROLL_STATE_IDLE){
+                    //暂停
+                    Log.e("SecondActivity", "停止了");
+                }
+                if (newState==RecyclerView.SCROLL_STATE_DRAGGING){
+                    //滑动
+                }
+
+            }
+        });
+        scrollView.setOnScrollStatusListener(new ObservableScrollView.OnScrollStatusListener(){
+            @Override
+            public void onScrollStop(){
+                //滑动停止 1秒后显示按钮
+//                if(isHasPos !=1){    //后台返回数据  判断是否需要展示这个按钮
+//                    Handler handler = new Handler();
+//                    handler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            iv_cj_guide.setVisibility(View.VISIBLE);
+//                        }
+//                    }, 1000);
+//                }
+                Log.e("SecondActivity", "滑动停止");
+            }
+
+            @Override
+            public void onScrolling(){
+                //滑动中 隐藏按钮
+//                if(isHasPos!=1){ //后台返回数据  判断是否需要展示这个按钮
+//
+//                    iv_cj_guide.setVisibility(View.GONE);
+//                }
+
+            }
+        });
+
+
         player = new MediaPlayer();
         play.setOnClickListener(v -> {
             playAudio(link);
@@ -58,9 +115,21 @@ public class SecondActivity extends AppCompatActivity {
         integerList.add(31);
         ArrayList<String> integerList1 = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
-            integerList1.add("1."+i);
+            integerList1.add("1." + i);
         }
-        stubline.updateTime(integerList,integerList1);
+        stubline.updateTime(integerList, integerList1);
+
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Log.e("MainActivity", "更新");
+                btNumber.jumpNumber();
+                handler.postDelayed(this, 1000);
+            }
+        };
+        handler.postDelayed(runnable, 0);
+        progress_view.setProgressValue(80);
     }
 
     public void playAudio(String url) {
