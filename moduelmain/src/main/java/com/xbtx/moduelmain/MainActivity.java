@@ -11,6 +11,7 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,8 +19,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.xbtx.mylibrary.ARouterPath;
+import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
     private TextView text;
@@ -63,13 +63,24 @@ public class MainActivity extends AppCompatActivity {
                 //对象传参跳转
                 //ARouter.getInstance().build(ARouterPath.PATH_SECOND).withParcelable("bean", new Bean("阿栋", "24")).navigation();
 //                ARouter.getInstance().build(ARouterPath.PATH_MALLMODEL_MAIN).withString("name", "阿栋").navigation();
-                Intent intent=new Intent(MainActivity.this,SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent);
             }
         });
+
+        double f = 111231.5585;
+        double d = 1006;
+        double d1 = 100;
+        Log.e("MainActivity", "1006/100:" + Double.valueOf(d / 100));
+        DecimalFormat df = new DecimalFormat("#.00");
+
+//        BigDecimal b = new BigDecimal(Double.valueOf(d / 100));
+//        double f1 = b.setScale(2, BigDecimal.ROUND_DOWN).doubleValue();
+
+        Log.e("MainActivity", "f1:" + df.format(d / 100));
     }
 
-        public class MyClickSpan extends ClickableSpan {
+    public class MyClickSpan extends ClickableSpan {
         private String mSpan;
 
         MyClickSpan(String span) {

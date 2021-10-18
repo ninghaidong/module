@@ -34,6 +34,8 @@ public class DownloadAudio {
 
     public DownloadAudioListener downloadAudioListener;
 
+    private boolean isDown;
+
     public DownloadAudio(DownloadAudioListener downloadAudioListener, String savePath, List<String> audiolist) {
 
         this.downloadAudioListener = downloadAudioListener;
@@ -64,24 +66,31 @@ public class DownloadAudio {
 
                 for (int t = 0; t < audioNamelist.size(); t++) {
 
+                    Log.e("DownloadAudio", audioNamelist.get(t));
                     if (audiolist.get(i).equals(audioNamelist.get(t))) {
+//                        downloadAudioListener.DownloadSuccess(savePath + "/" + audioNamelist.get(i), i);
 
-                        Log.e("DownloadAudio", "下载了");
-                        downloadAudioListener.DownloadSuccess(savePath + "/" + audioNamelist.get(i), i);
-
+                        isDown = true;
                         break;
 
                     } else {
 
                         if (t == audiolist.size() - 1) {
-                            Log.e("DownloadAudio", "没下载");
 
-                            OkHttpDownloadAudio(url, i);
+                            isDown = false;
+//                            OkHttpDownloadAudio(url, i);
 
                         }
 
                     }
 
+                }
+                if (isDown) {
+                    Log.e("DownloadAudio", "下载了");
+                    downloadAudioListener.DownloadSuccess(savePath + "/" + audioNamelist.get(i), i);
+                } else {
+                    Log.e("DownloadAudio", "没下载");
+                    OkHttpDownloadAudio(url, i);
                 }
 
             } else {
@@ -97,6 +106,7 @@ public class DownloadAudio {
         }
 
     }
+
     //定义一个信任所有证书的TrustManager
     final X509TrustManager trustAllCert = new X509TrustManager() {
         @Override
@@ -112,6 +122,7 @@ public class DownloadAudio {
             return new java.security.cert.X509Certificate[]{};
         }
     };
+
     @SuppressLint("NewApi")
 
     public void OkHttpDownloadAudio(final String url, final int i) {

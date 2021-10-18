@@ -48,9 +48,12 @@ public class SecondActivity extends AppCompatActivity implements DownloadAudio.D
         String savePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Demo";
         Log.e("SecondActivity", savePath);
 
-        demolist.add("https://mp.xunbao88.com.cn/appweb/static/sleep/mp3/8.mp3");
-        demolist.add("https://mp.xunbao88.com.cn/appweb/static/sleep/mp3/12.mp3");
-        demolist.add("https://mp.xunbao88.com.cn/appweb/static/sleep/mp3/21.mp3");
+//        demolist.add("https://mp.xunbao88.com.cn/appweb/static/sleep/mp3/8.mp3");
+//        demolist.add("https://mp.xunbao88.com.cn/appweb/static/sleep/mp3/12.mp3");
+//        demolist.add("https://mp.xunbao88.com.cn/appweb/static/sleep/mp3/21.mp3");
+        demolist.add("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
+        demolist.add("http://gslb.miaopai.com/stream/oxX3t3Vm5XPHKUeTS-zbXA__.mp4 ");
+        demolist.add("http://flv2.bn.netease.com/videolib3/1611/28/nNTov5571/SD/nNTov5571-mobile.mp4");
         for (int i = 0; i < demolist.size(); i++) {
 
             audiolist.add(StringUtil.makeMd5(demolist.get(i)));//将网络下载url转成md5

@@ -130,6 +130,11 @@ public class SecondActivity extends AppCompatActivity {
         };
         handler.postDelayed(runnable, 0);
         progress_view.setProgressValue(80);
+
+        Student.StudentBuilder studentBuilder = new Student.StudentBuilder(1, "阿丁");
+        Student build = studentBuilder.build();
+        build.Toast(this);
+
     }
 
     public void playAudio(String url) {
