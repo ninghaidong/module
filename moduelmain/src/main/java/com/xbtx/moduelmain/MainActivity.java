@@ -3,13 +3,16 @@ package com.xbtx.moduelmain;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.ImageSpan;
 import android.text.style.URLSpan;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         mActivty = this;
         text = (TextView) findViewById(R.id.text);
         buttonActivity = findViewById(R.id.button_activity);
+        TextView text2 = findViewById(R.id.text2);
         text.setText(Html.fromHtml("以岭连花清凉走珠，19.9<br>Mistine防晒，49<br>鼠标，9.9<br>Sakose手膜，9.9 <br>1，  <a href=\"https://uland.taobao.com/coupon/edetail?activityId=e4e4d57245a647cfb6d79d90e812c31b&itemId=633467264294\">网页链接</a>            <br>2，  <a href=\"https://uland.taobao.com/coupon/edetail?activityId=60f3f686e25f46f7a6604e26ebb2f1ce&itemId=564842070490\">网页链接</a>            <br>4，  <a href=\"https://uland.taobao.com/coupon/edetail?e=AIQO%2FxN0rRelhHvvyUNXZfh8CuWt5YH5OVuOuRD5gLJMmdsrkidbOcgNAa9X6T79uG1ZaNECU%2FQkVJFvh9f38PP7TSqNMtm6XRuv7xpz1L7QEUCpE4O7XaPu0UeHNPBWv2Ac2g3cAjwfPV0IojuzbUvPUlU7ppuZfEU6k2RDH%2BP3skwo30vk2ImZwxskUEIk0aoUfJAYAWXM4nPQrVf7aqkstQw2%2BIgckYlayRNqVZNxcXZ4uChJ07EduVXKDczHTmR4x5CnEU613%2BL5hoPgg0wNBUbTsArs&traceId=0bb6ad0216203717987052772e52c5&&union_lens=lensId:TAPI@1620371798@0b59e280_cd41_17945af7acc_8840@01;linkRuleId:1&activityId=b83363929df74574aeb1e003532f7461\">网页链接</a>            <br>"));
         text.setMovementMethod(LinkMovementMethod.getInstance());
         CharSequence str = text.getText();
@@ -78,6 +82,19 @@ public class MainActivity extends AppCompatActivity {
 //        double f1 = b.setScale(2, BigDecimal.ROUND_DOWN).doubleValue();
 
         Log.e("MainActivity", "f1:" + df.format(d / 100));
+
+
+        String a = "有2年没这样想想真佩服你们现在,2年没这样想想真,2年没这样想想真佩佩服,2年没这样想想真佩服";
+        SpannableString spanText = new SpannableString("图"+a);
+        Drawable drawable = getResources().getDrawable(R.drawable.icon_xile_dou);
+// 左上右下 控制图片大小
+        drawable.setBounds(0, 0, 30, 30);
+
+// 替换0,1的字符
+        spanText.setSpan(new ImageSpan(drawable), 0, 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+//        text2.append("\n");
+        text2.append(spanText);
+
     }
 
     public class MyClickSpan extends ClickableSpan {
