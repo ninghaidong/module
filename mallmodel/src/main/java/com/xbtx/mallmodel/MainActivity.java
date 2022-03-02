@@ -1,6 +1,7 @@
 package com.xbtx.mallmodel;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,12 +16,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.lzj.pass.dialog.PayPassDialog;
 import com.lzj.pass.dialog.PayPassView;
 import com.xbtx.mylibrary.ARouterPath;
 
 import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private String string = "";
     Runnable runnable;
     NoLeakHandler handler;
-    private String shi = "碧玉_成__高,万条_下绿__";
+    private String shi = "1234567890-";
+    private TimePickerView pvTime; //时间选择器对象
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +73,10 @@ public class MainActivity extends AppCompatActivity {
         payDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                initTimePicker(); //初始化时间选择器
+                pvTime.show();//显示时间选择器
 //                payDialog();
-                handler.postDelayed(runnable, 0);
+//                handler.postDelayed(runnable, 0);
                 // handler.sendEmptyMessage(1);
             }
         });
@@ -78,11 +88,12 @@ public class MainActivity extends AppCompatActivity {
 
         String tt = "日出江花红胜火,春来江水绿如蓝";
 
-        String regEx="[`~!@#$%^&*()+=|{}':;'\\[\\].<>/?~！@#￥%……&*（）——+|{}【】'；：”“’。、？,，]";
+        String regEx="[`~!@#$%^&*()+=|{}':;'\\[\\].<>/?~！@#￥%……&*（）——+|{}【】'；：”“’。、？,，-]";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(shi);
         String toSpeechText=m.replaceAll("").trim();
         Log.i("lgq","ww正则==="+toSpeechText);
+        Log.i("lgq", "isNumeric(toSpeechText):" + isNumeric(toSpeechText));
 
         Pattern pattern = Pattern.compile("\t|\r|\n|\\s*");
         Matcher matcher = pattern.matcher(toSpeechText);
@@ -100,6 +111,15 @@ public class MainActivity extends AppCompatActivity {
 //        String s1 = s.replaceAll("</p>", "");
 //        Log.e("MainActivity", s1);
         Log.e("MainActivity", removeHtmlTag(str));
+    }
+
+    public boolean isNumeric(String str){
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(str);
+        if( !isNum.matches() ){
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -184,6 +204,41 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+    //初始化时间选择器
+    private void initTimePicker() {
+        Calendar selectedDate = Calendar.getInstance();
+        Calendar startDate = Calendar.getInstance();
+        startDate.set(1900, 1, 1);//起始时间
+        Calendar endDate = Calendar.getInstance();
+        endDate.set(2099, 12, 31);//结束时间
+        pvTime= new TimePickerBuilder(this, new OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {
+                //选中事件回调
+                //mTvMyBirthday 这个组件就是个TextView用来显示日期 如2020-09-08
+                content.setText(getTimes(date));
+            }
+        })
+                //年月日时分秒 的显示与否，不设置则默认全部显示
+                .setType(new boolean[]{true, true, true, false, false, false})
+                .setLabel("", "", "", "时", "", "")
+                .isCenterLabel(true)
+                .setDividerColor(Color.DKGRAY)
+                .setTitleSize(21)
+                .setDate(selectedDate)
+                .setRangDate(startDate, endDate)
+                .setDecorView(null)
+                .build();
+    }
+
+    //格式化时间
+    private String getTimes(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(date);
+    }
+
 
     @Override
     protected void onDestroy() {

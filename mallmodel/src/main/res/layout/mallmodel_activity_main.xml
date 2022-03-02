@@ -37,7 +37,7 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:ratingClick="false"
+        app:ratingClick="true"
         app:ratingCount="2"
         app:starCount="5"
         app:starEmpty="@drawable/mallmodel_ic_rate_stroke"

@@ -90,10 +90,16 @@ public class MainActivity extends AppCompatActivity {
 // 左上右下 控制图片大小
         drawable.setBounds(0, 0, 30, 30);
 
+
 // 替换0,1的字符
         spanText.setSpan(new ImageSpan(drawable), 0, 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 //        text2.append("\n");
         text2.append(spanText);
+
+        Log.e("MainActivity", a.substring(0, 5));
+
+        String b="埃德加·斯诺在《红星照耀中国》一书中写道“冒险、探索、发现、勇气、胜利和狂喜、艰难困苦，英勇牺牲、忠心耿耿、这些千千万万青年人的经久不衰的热情，始终如一的希望，令人惊诧的革命乐观情绪，像一把火焰，贯穿着这一切，他们无论在人力面前，或者在大自然面前，上帝面前，死亡面前，都绝不承认失败。”这是斯诺对工农红军的万里长征的评价。";
+        Log.e("MainActivity", "b.length():" + b.length());
 
     }
 
