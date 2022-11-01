@@ -9,7 +9,7 @@ import androidx.core.widget.NestedScrollView;
 
 /**
  * @author: 宁
- * @className:
+ * @className: ScrollView滑动停止判断
  * @date: 2021/9/2 9:43
  */
 public class ObservableScrollView extends NestedScrollView
